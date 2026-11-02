@@ -1,0 +1,857 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#655077"><meta name="description" content="마음을 걷다: 메이저 22장 카드 상징과 자리별 질문, 실전 리딩 연습장"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><title>마음을 걷다 | 리딩 스튜디오</title><style>
+:root{--ink:#332b35;--muted:#756d78;--purple:#725c82;--paper:#faf7f5;--line:#e7dfe4;--soft:#f1eaf0;--white:#fff}*{box-sizing:border-box}body{margin:0;font-family:'Malgun Gothic','Apple SD Gothic Neo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}button,input,select,textarea{font:inherit}button{cursor:pointer}header{background:#64516e;color:white;padding:23px 18px 20px}header .inner,main,footer{max-width:840px;margin:auto}.eyebrow{font-size:11px;letter-spacing:2px;opacity:.82}h1{font-size:24px;margin:4px 0}header p{margin:0;font-size:13px;opacity:.9}main{padding:16px 14px 100px}.panel{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 4px 14px #3e26330b}.small{font-size:12px;color:var(--muted)}h2{font-size:19px;margin:0 0 12px}h3{font-size:15px;margin:16px 0 6px}label{display:block;font-weight:700;font-size:13px;margin-bottom:7px}select,input,textarea{width:100%;border:1px solid #d9ced9;border-radius:10px;background:white;color:var(--ink);padding:12px;outline-color:var(--purple)}textarea{min-height:85px;resize:vertical}.tags{display:flex;gap:6px;flex-wrap:wrap}.tag{background:var(--soft);color:#624b71;border-radius:100px;padding:4px 10px;font-size:12px}.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:12px 0}.tabs button{background:#f4eff3;color:#6c5a73;border:0;border-radius:10px;padding:10px 2px;font-size:12px}.tabs button.active{background:var(--purple);color:white}.section{padding:14px;border-radius:13px;background:#f9f6f8;margin-top:9px}.section h3{margin:0 0 8px}.question{border-top:1px solid #e8e0e6;padding:10px 0}.question:first-of-type{border-top:0}.question small{display:block;color:var(--muted);margin-bottom:4px}.primary{background:var(--purple);color:white;border:0;border-radius:11px;padding:13px 16px;font-weight:700}.secondary{background:white;border:1px solid #c8b8cb;color:var(--purple);border-radius:11px;padding:11px 13px}.btnrow{display:flex;gap:8px;flex-wrap:wrap}.card-top{display:flex;gap:12px;align-items:center}.symbol{width:64px;height:84px;border-radius:12px;background:linear-gradient(160deg,#d6c9d9,#f4ece7);display:grid;place-items:center;flex-shrink:0;color:#584463;font-size:25px;font-family:Georgia,serif}.card-title{font-size:24px;font-weight:700}.helper{border-left:3px solid #a68ca9;padding:8px 11px;background:#f7f2f7;font-size:13px}.field{margin:12px 0}.status{font-size:12px;color:#61705c;margin-top:8px}.progress{height:8px;border-radius:20px;background:#e9e2e9;overflow:hidden;margin:7px 0 13px}.progress span{display:block;height:100%;background:#89739a;transition:width .2s}nav{position:fixed;bottom:0;left:0;right:0;background:#fffefefa;border-top:1px solid var(--line);display:flex;justify-content:center;padding:7px max(12px,env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom));z-index:4;backdrop-filter:blur(12px)}nav button{width:min(25%,160px);border:0;background:none;color:#736776;font-size:11px;padding:7px 0}nav button.active{color:#674c79;font-weight:800}.hidden{display:none!important}footer{padding:10px 18px 110px;font-size:12px;color:var(--muted)}.pill{border:1px solid #d6c8d7;border-radius:20px;padding:7px 10px;background:white;font-size:12px}.pill.selected{background:#e8deea}.note{font-size:13px;color:var(--muted)}.record{padding:12px;border:1px solid var(--line);border-radius:12px;margin:9px 0}.record p{margin:4px 0}.score-row{display:grid;grid-template-columns:1fr 70px;align-items:center;gap:10px;margin:8px 0}.score-row select{padding:8px} @media(min-width:650px){main{padding:24px 20px 110px}.tabs button{font-size:14px}}
+</style></head><body><header><div class="inner"><div class="eyebrow">날마다 소풍 👣</div><h1>마음을 걷다</h1><p>메이저 22장 · 아난트의 통찰을 쌓는 리딩 스튜디오</p></div></header><main>
+<section id="dictionary"><div class="panel"><label for="cardPick">공부할 카드 선택 · 22장</label><select id="cardPick"></select><div id="cardInfo" style="margin-top:17px"></div><div class="tabs" id="positionTabs"><button data-pos="all" class="active">전체</button><button data-pos="0">표면</button><button data-pos="1">잠재</button><button data-pos="2">믿음</button></div><div id="positions"></div><div class="section" id="personalInsight"><h3>아난트의 리딩 통찰 노트</h3><p class="small">사전 해석보다 실제 경험에서 발견한 아난트만의 문장을 축적하세요. 카드마다 따로 저장됩니다.</p><textarea id="cardNote" placeholder="내가 실제로 본 그림의 장면, 떠오른 리딩 문장, 내담자의 응답을 통해 새롭게 깨달은 점 (개인정보 제외)"></textarea><div class="btnrow"><button class="secondary" id="saveCardNote">이 카드의 통찰 저장</button></div><div class="status" id="cardNoteStatus"></div></div><div class="btnrow" style="margin-top:14px"><button class="primary" id="practiceCard">이 카드로 연습하기</button><button class="secondary" id="favoriteCard">☆ 즐겨찾기</button></div></div></section>
+<section id="practice" class="hidden"><div class="panel"><h2>실전 리딩 연습장</h2><p class="small">가상 내담자 상황을 정하고, 카드 세 장을 각 의식 자리에 배치한 뒤 통합 리딩과 질문을 작성해 보세요. 작성 내용은 이 기기의 브라우저에만 저장됩니다.</p><div class="field"><label for="scenario">가상 내담자의 고민</label><textarea id="scenario" placeholder="예: 새로운 일을 시작하고 싶지만 실패가 두려워요."></textarea></div><div class="field"><label>자리별 카드 선택</label><div id="threePicks"></div></div><div class="field"><label for="integrated">1단계 · 아난트의 세 장 통합 리딩 (질문보다 먼저)</label><textarea id="integrated" style="min-height:130px" placeholder="세 장의 의미를 연결해 내담자에게 설명하듯 작성해 보세요."></textarea></div><div class="section"><h3>2단계 · 질문으로 확인하기</h3><p class="small">위 통합 리딩을 먼저 자신의 언어로 작성해 주세요. 그다음 자리별 질문을 열어 내담자의 실제 경험과 비교합니다.</p><button class="secondary" id="unlockQuestions">통합 리딩을 마쳤어요 · 질문 단계 열기</button><div class="status" id="unlockStatus"></div></div><div id="practiceQuestions" class="hidden"></div><div class="field"><label for="response">가상 내담자의 응답 및 확인 내용</label><textarea id="response" placeholder="내담자의 답변을 듣고 해석이 맞는지 확인한 내용을 적으세요."></textarea></div><h3>K-P-Q-C 자가 평가</h3><div id="scores"></div><div class="field"><label for="improve">오늘의 개선점 한 가지</label><textarea id="improve" placeholder="다음 리딩에서 개선할 점"></textarea></div><div class="btnrow"><button class="primary" id="savePractice">학습 기록 저장</button><button class="secondary" id="exportPractice">내용 복사</button><button class="secondary" id="clearPractice">새 연습 시작</button></div><div class="status" id="saveStatus"></div></div></section>
+<section id="records" class="hidden"><div class="panel"><h2>나의 학습 기록</h2><div class="small">기기에 저장된 기록을 다시 보거나 백업할 수 있어요. 다른 기기와 자동 동기화되지 않습니다.</div><div id="recordsList"></div><div class="btnrow"><button class="secondary" id="backup">JSON 백업</button><button class="secondary" id="importBtn">백업 가져오기</button><input id="importFile" type="file" accept="application/json,.json" class="hidden"><button class="secondary" id="downloadManual">학습 매뉴얼 저장</button></div></div></section>
+<section id="guide" class="hidden"><div class="panel"><h2>사용 매뉴얼</h2><h3>① 질문을 먼저 듣기</h3><p>가상 내담자가 말한 문장을 출발점으로 삼습니다. 카드만 보고 내담자의 숨은 사실을 확정하지 않습니다.</p><h3>② 카드 사전과 아난트의 통찰</h3><p>22장 중 한 장을 선택해 그림 상징, 핵심 키워드, 쉬운 설명을 공부합니다. 전체·표면·잠재·믿음 탭을 눌러 같은 카드의 자리별 해석과 질문 3개씩을 비교하세요.</p><h3>③ 세 장 통합 리딩</h3><p>가상 내담자의 구체적인 고민을 정하고 표면의식·잠재의식·믿음체계에 각각 한 장을 배치합니다. 먼저 자신의 언어로 세 장을 연결해 리딩하세요.</p><h3>④ 자리별 질문하기</h3><p>표면의식은 현재 상황·이유·선택, 잠재의식은 감정·욕구·심화 탐색, 믿음체계는 기준·당위·반복 패턴을 확인합니다. 질문은 한 번에 하나씩, 내담자의 답변에 맞춰 조정하세요.</p><h3>⑤ 내담자의 응답과 재리딩</h3><p>K(키워드), P(자리), Q(질문), C(확인)를 각각 1~5점으로 평가합니다. 내담자의 경험을 카드로 확정하지 않고 확인한 내용과 개선점을 기록하세요.</p><h3>⑥ 저장 및 개인정보</h3><p>학습 기록은 이 브라우저의 로컬 저장소에 보관됩니다. 앱 데이터 삭제 또는 시크릿 모드에서는 사라질 수 있으니 백업을 사용하세요. 실제 내담자의 이름·연락처·민감한 상담 내용은 입력하지 않는 것을 권장합니다.</p><div class="helper">이 앱은 자기탐색을 위한 학습 도구입니다. 미래 예언, 심리 진단, 숨겨진 기억의 판정 도구가 아닙니다. 실전 연습은 가상의 상황을 사용하세요.</div><h3>해외 숙련 리더의 방법에서 가져온 학습 원칙</h3><p>메리 K. 그리어: 카드 그림을 충분히 관찰하고 내담자의 시각에서 질문하며 대화를 돕는다. 레이철 폴락: 내담자가 실제로 알고 싶은 질문에서 리딩을 시작하고 상징을 고정 답으로 사용하지 않는다. 베네벨 웬: 카드 여러 장을 함께 읽는 사례 연구로 개인의 해석 방식을 발전시킨다.</p><p class="small">아래 자료는 공개된 저술·인터뷰와 실천 윤리 원칙을 참고한 것이며, 아난트의 모든 카드 해석이 10년 이상 경력자에게 개별 검증되었다는 뜻은 아닙니다. 사례 문장은 앱을 위해 새로 쓴 교육 예시입니다.</p><p><a href="https://teen.llewellyn.com/journal/print.php?id=2008" target="_blank" rel="noopener">Mary K. Greer · 21 Ways of Looking at the Tarot</a></p><p><a href="https://www.thetarotlady.com/talkin-tarot-with-rachel-pollack/" target="_blank" rel="noopener">Rachel Pollack · Tarot Lady 인터뷰</a></p><p><a href="https://benebellwen.com/about-the-book/" target="_blank" rel="noopener">Benebell Wen · Holistic Tarot</a></p><p><a href="https://www.internationaltarotfoundation.com/code-of-ethics" target="_blank" rel="noopener">International Tarot Foundation · 윤리 원칙</a></p><h3>홈 화면 설치</h3><p>이 폴더를 HTTPS 웹서버에 게시한 다음 Android Chrome에서 웹주소를 열고 메뉴(⋮) → ‘앱 설치’ 또는 ‘홈 화면에 추가’를 선택하세요. 단순히 HTML 파일을 열면 브라우저에 따라 설치 메뉴가 나타나지 않을 수 있습니다.</p></div></section>
+</main><nav><button data-page="dictionary" class="active">▦<br>카드 사전</button><button data-page="practice">✎<br>실전 연습</button><button data-page="records">▤<br>학습 기록</button><button data-page="guide">ⓘ<br>사용법</button></nav><footer>날마다 소풍 · 매일의 삶을 가볍게, 나답게.<br>© 마음을 걷다 · 학습용 메이저 카드 해석 및 질문 가이드</footer>
+<script id="card-data" type="application/json">[
+  {
+    "n": "0",
+    "name": "바보",
+    "en": "The Fool",
+    "keywords": [
+      "시작",
+      "자유",
+      "가능성"
+    ],
+    "symbol": "절벽은 미지의 세계, 흰 장미는 순수함, 작은 개는 주변의 신호",
+    "easy": "결과를 아직 모르더라도 새로운 경험을 해보고 싶은 마음",
+    "interpretations": [
+      "새로운 시작을 생각하고 있는 상태",
+      "자유롭게 시도하고 싶은 욕구",
+      "시작하려면 완벽하게 준비해야 한다는 생각"
+    ],
+    "questions": [
+      [
+        "지금 시작하고 싶은 일은 뭔가요?",
+        "왜 그 일을 시작하고 싶으세요?",
+        "바로 시작하고 싶으세요, 더 준비하고 싶으세요?"
+      ],
+      [
+        "새로운 시작을 생각하면 어떤 기분이 드세요?",
+        "그 일을 통해 무엇을 얻고 싶으세요?",
+        "마음껏 시도한다면 무엇부터 하시겠어요?"
+      ],
+      [
+        "시작하려면 어떤 준비가 필요하다고 생각하세요?",
+        "실수하면 안 된다고 생각하세요?",
+        "준비가 부족하다고 느껴 기회를 미룬 적이 있나요?"
+      ]
+    ],
+    "insight": "가능성은 크지만 준비의 수준과 무모함은 구별해야 한다.",
+    "alternative": "새 출발에 설레는 마음과 잃을 수 있는 자원을 함께 볼 것.",
+    "bridge_question": "아직 해보지 못한 일에서 무엇이 가장 기대되고, 무엇은 준비가 필요할까요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "I",
+    "name": "마법사",
+    "en": "The Magician",
+    "keywords": [
+      "의지",
+      "실행",
+      "자원"
+    ],
+    "symbol": "지팡이는 의지, 탁자의 네 도구는 활용할 자원, 무한대 기호는 가능성",
+    "easy": "가진 능력과 자원을 활용해 생각을 행동으로 옮기는 태도",
+    "interpretations": [
+      "스스로 문제를 해결하려는 생각",
+      "자신의 능력을 펼치고 싶은 욕구",
+      "모든 일을 스스로 해결해야 한다는 기준"
+    ],
+    "questions": [
+      [
+        "지금 직접 해결하려는 일이 뭔가요?",
+        "그 일을 꼭 해내고 싶은 이유는 뭔가요?",
+        "무엇부터 실행하고 싶으세요?"
+      ],
+      [
+        "잘 해냈을 때 어떤 기분이 드세요?",
+        "어떤 능력을 더 발휘하고 싶으세요?",
+        "아직 시도하지 못한 일이 있나요?"
+      ],
+      [
+        "일을 잘하려면 무엇이 필요하다고 생각하세요?",
+        "혼자 해결해야 한다고 생각하세요?",
+        "도움을 요청하지 않고 혼자 해결한 적이 자주 있나요?"
+      ]
+    ],
+    "insight": "실행력이 보이더라도 능력을 증명해야 한다는 압박을 읽어볼 수 있다.",
+    "alternative": "자원이 충분한지, 모든 것을 혼자 책임지려는지 분리할 것.",
+    "bridge_question": "이미 가진 자원과 아직 필요한 도움을 각각 꼽아볼까요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "II",
+    "name": "여사제",
+    "en": "The High Priestess",
+    "keywords": [
+      "직관",
+      "관찰",
+      "신중함"
+    ],
+    "symbol": "두 기둥은 서로 다른 측면, 두루마리는 지식, 장막은 아직 드러나지 않은 것",
+    "easy": "서둘러 결정하기보다 상황과 자신의 느낌을 살펴보는 태도",
+    "interpretations": [
+      "결정 전에 신중하게 살펴보는 상태",
+      "자신의 느낌을 믿고 싶은 마음",
+      "확신이 있어야 움직일 수 있다는 생각"
+    ],
+    "questions": [
+      [
+        "지금 가장 망설이는 이유는 뭔가요?",
+        "왜 결정을 더 기다리고 계세요?",
+        "시작과 기다림 중 어디에 마음이 가세요?"
+      ],
+      [
+        "결정을 생각하면 어떤 느낌이 드세요?",
+        "사실 어떤 선택을 하고 싶으세요?",
+        "말하지 못한 걱정이 있나요?"
+      ],
+      [
+        "결정 전에 무엇을 꼭 확인해야 하나요?",
+        "확신이 있어야 움직일 수 있다고 생각하세요?",
+        "확신이 없어 선택을 미룬 적이 있나요?"
+      ]
+    ],
+    "insight": "직관은 사실을 안다는 뜻이 아니라 내면의 신호를 알아차리는 태도다.",
+    "alternative": "침묵이 깊은 관찰인지, 결정 회피인지 단정하지 않을 것.",
+    "bridge_question": "지금 알고 있는 사실과 아직 느낌으로만 남아 있는 부분은 각각 무엇인가요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "III",
+    "name": "여황제",
+    "en": "The Empress",
+    "keywords": [
+      "돌봄",
+      "풍요",
+      "성장"
+    ],
+    "symbol": "밀밭은 결실, 풍요로운 자연은 성장, 편안한 자세는 수용과 안정감",
+    "easy": "무언가를 돌보고 성장시키며 자신도 편안하게 지내고 싶은 마음",
+    "interpretations": [
+      "돌봄과 안정을 중요하게 여기는 상태",
+      "자신을 보살피고 싶은 욕구",
+      "다른 사람을 먼저 챙겨야 한다는 기준"
+    ],
+    "questions": [
+      [
+        "요즘 가장 많이 돌보는 대상은 누구인가요?",
+        "왜 그 일을 우선하고 계세요?",
+        "자신을 위해 무엇을 먼저 하시겠어요?"
+      ],
+      [
+        "편히 쉴 때 어떤 기분이 드세요?",
+        "요즘 자신에게 가장 필요한 건 뭔가요?",
+        "돌봄받고 싶은 순간이 있나요?"
+      ],
+      [
+        "좋은 돌봄이란 무엇이라고 생각하세요?",
+        "다른 사람을 먼저 챙겨야 한다고 생각하세요?",
+        "자신의 필요를 뒤로 미룬 적이 자주 있나요?"
+      ]
+    ],
+    "insight": "돌봄의 풍요와 돌봄 노동의 소진은 같은 그림에 공존할 수 있다.",
+    "alternative": "누구를 돌보는지뿐 아니라 자기 돌봄의 몫을 볼 것.",
+    "bridge_question": "그동안 남에게 준 만큼 자신에게도 주고 싶은 것은 무엇인가요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "IV",
+    "name": "황제",
+    "en": "The Emperor",
+    "keywords": [
+      "안정",
+      "질서",
+      "책임"
+    ],
+    "symbol": "돌 왕좌는 견고한 기반, 양머리 장식은 추진력, 갑옷은 보호와 대비",
+    "easy": "삶의 구조를 세우고 책임 있게 상황을 관리하려는 태도",
+    "interpretations": [
+      "상황을 정리하고 관리하려는 생각",
+      "안정과 보호를 원하는 마음",
+      "질서를 지키고 책임져야 한다는 기준"
+    ],
+    "questions": [
+      [
+        "지금 가장 관리하고 싶은 문제는 뭔가요?",
+        "그 부분이 중요한 이유는 뭔가요?",
+        "무엇부터 정리하고 싶으세요?"
+      ],
+      [
+        "계획이 틀어지면 어떤 기분이 드세요?",
+        "어떤 안정감을 가장 원하세요?",
+        "누군가에게 맡기고 싶은 일이 있나요?"
+      ],
+      [
+        "책임 있는 사람이란 어떤 사람인가요?",
+        "항상 통제하고 있어야 한다고 생각하세요?",
+        "계획이 바뀌면 불편했던 경험이 있나요?"
+      ]
+    ],
+    "insight": "안정은 성장을 지지하는 구조가 될 수도, 변화를 막는 규칙이 될 수도 있다.",
+    "alternative": "책임감과 통제 욕구를 구별할 것.",
+    "bridge_question": "지켜야 하는 안전장치와 바꿔도 되는 규칙을 나눠볼까요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "V",
+    "name": "교황",
+    "en": "The Hierophant",
+    "keywords": [
+      "전통",
+      "규칙",
+      "가르침"
+    ],
+    "symbol": "왕관은 전통적 권위, 열쇠는 지식, 앞의 두 인물은 배움과 공동체",
+    "easy": "배워온 원칙이나 주변의 조언을 참고하며 선택하는 태도",
+    "interpretations": [
+      "기존의 기준과 조언을 고려하는 상태",
+      "믿을 만한 가르침이나 소속감을 원하는 마음",
+      "정해진 방식을 따라야 한다는 신념"
+    ],
+    "questions": [
+      [
+        "지금 누구의 조언을 참고하고 계세요?",
+        "그 조언이 중요한 이유는 뭔가요?",
+        "조언과 자신의 생각 중 어디에 마음이 가세요?"
+      ],
+      [
+        "조언을 들으면 어떤 기분이 드세요?",
+        "누구에게 인정받고 싶으세요?",
+        "자신만의 방식으로 해보고 싶은 일이 있나요?"
+      ],
+      [
+        "올바른 선택의 기준은 뭔가요?",
+        "정해진 방식을 따라야 한다고 생각하세요?",
+        "남의 기준 때문에 선택을 바꾼 적이 있나요?"
+      ]
+    ],
+    "insight": "전통은 배움의 자원이지만 자신의 선택을 대신해 주지는 않는다.",
+    "alternative": "가르침의 가치와 타인의 승인 욕구를 구별할 것.",
+    "bridge_question": "그 조언에서 자신에게 도움이 되는 부분과 맞지 않는 부분은 무엇인가요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "VI",
+    "name": "연인",
+    "en": "The Lovers",
+    "keywords": [
+      "관계",
+      "선택",
+      "가치관"
+    ],
+    "symbol": "두 인물은 관계와 선택, 천사는 가치와 조화, 산은 선택의 어려움",
+    "easy": "관계 속에서 자신의 마음과 중요한 가치를 선택하는 상황",
+    "interpretations": [
+      "중요한 관계나 선택을 고민하는 상태",
+      "자신의 가치에 맞는 관계를 원하는 마음",
+      "관계를 위해 서로 맞춰야 한다는 기준"
+    ],
+    "questions": [
+      [
+        "지금 어떤 선택을 고민하세요?",
+        "그 선택이 어려운 이유는 뭔가요?",
+        "어느 쪽이 더 마음에 가세요?"
+      ],
+      [
+        "그 사람과 있을 때 어떤 기분이 드세요?",
+        "관계에서 가장 원하는 것은 뭔가요?",
+        "상대에게 말하지 못한 바람이 있나요?"
+      ],
+      [
+        "좋은 관계의 기준은 뭔가요?",
+        "관계를 위해 양보해야 한다고 생각하세요?",
+        "상대의 기대 때문에 선택을 바꾼 적이 있나요?"
+      ]
+    ],
+    "insight": "연인은 로맨스보다 가치에 근거한 선택으로도 읽힌다.",
+    "alternative": "관계의 조화와 자기 포기의 가능성을 모두 열어 둘 것.",
+    "bridge_question": "누구의 기대도 없다면 스스로 가장 중요하게 여길 선택 기준은 뭔가요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "VII",
+    "name": "전차",
+    "en": "The Chariot",
+    "keywords": [
+      "추진력",
+      "방향",
+      "의지"
+    ],
+    "symbol": "전차는 전진, 흑백 스핑크스는 서로 다른 힘, 갑옷은 결단과 보호",
+    "easy": "어려움 속에서도 방향을 정하고 목표를 향해 움직이려는 태도",
+    "interpretations": [
+      "목표를 향해 적극적으로 움직이려는 생각",
+      "성취하고 독립적으로 나아가고 싶은 욕구",
+      "멈추면 뒤처진다는 기준"
+    ],
+    "questions": [
+      [
+        "지금 가장 이루고 싶은 목표는 뭔가요?",
+        "그 목표가 중요한 이유는 뭔가요?",
+        "어느 방향으로 움직이고 싶으세요?"
+      ],
+      [
+        "목표에 가까워지면 어떤 기분이 드세요?",
+        "무엇을 꼭 성취하고 싶으세요?",
+        "잠시 멈추고 싶은 마음도 있나요?"
+      ],
+      [
+        "성공했다고 판단하는 기준은 뭔가요?",
+        "계속 앞으로 나아가야 한다고 생각하세요?",
+        "쉬지 않고 달려온 경험이 있나요?"
+      ]
+    ],
+    "insight": "전진의 힘은 있으나 방향이 서로 엇갈리는지를 확인한다.",
+    "alternative": "속도와 방향성, 의지와 부담을 구별할 것.",
+    "bridge_question": "지금 가장 빠르게 움직이고 싶은 부분과 속도를 줄여야 할 부분은 무엇인가요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "VIII",
+    "name": "힘",
+    "en": "Strength",
+    "keywords": [
+      "용기",
+      "인내",
+      "자기 신뢰"
+    ],
+    "symbol": "사자를 부드럽게 다루는 여인은 내적 용기, 무한대 기호는 가능성, 꽃은 부드러움",
+    "easy": "힘든 감정을 부드럽게 다루면서 자신을 믿는 태도",
+    "interpretations": [
+      "어려움을 차분하게 견디려는 상태",
+      "자신을 믿고 행동하고 싶은 욕구",
+      "강한 사람은 흔들리면 안 된다는 생각"
+    ],
+    "questions": [
+      [
+        "지금 어떤 상황을 견디고 계세요?",
+        "왜 계속 버티고 계세요?",
+        "지금 가장 필요한 행동은 뭔가요?"
+      ],
+      [
+        "힘들 때 어떤 감정이 가장 크게 드세요?",
+        "어떤 선택을 용기 있게 해보고 싶으세요?",
+        "도움을 받고 싶은 부분이 있나요?"
+      ],
+      [
+        "강한 사람은 어떤 사람이라고 생각하세요?",
+        "힘들어도 참아야 한다고 생각하세요?",
+        "감정을 드러내지 않고 참은 적이 있나요?"
+      ]
+    ],
+    "insight": "힘은 억압보다 감정을 부드럽게 다루는 능력에 가깝다.",
+    "alternative": "참아내는 행동이 자기 신뢰인지 과도한 인내인지 살펴볼 것.",
+    "bridge_question": "계속 견디는 것과 나를 보호하는 것 사이에 어떤 차이가 있나요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "IX",
+    "name": "은둔자",
+    "en": "The Hermit",
+    "keywords": [
+      "성찰",
+      "탐색",
+      "독립"
+    ],
+    "symbol": "등불은 통찰, 지팡이는 지지, 산 정상은 고요한 성찰",
+    "easy": "혼자만의 시간을 통해 자신에게 중요한 답을 찾는 태도",
+    "interpretations": [
+      "혼자 생각을 정리하고 싶은 상태",
+      "자신의 답을 스스로 찾고 싶은 욕구",
+      "중요한 문제는 혼자 해결해야 한다는 기준"
+    ],
+    "questions": [
+      [
+        "요즘 혼자 고민하는 문제는 뭔가요?",
+        "왜 혼자 생각하고 싶으세요?",
+        "누구와 이야기해 보고 싶으세요?"
+      ],
+      [
+        "혼자 있을 때 어떤 기분이 드세요?",
+        "혼자만의 시간에서 무엇을 얻고 싶으세요?",
+        "누군가에게 털어놓고 싶은 일이 있나요?"
+      ],
+      [
+        "도움을 요청하는 것에 대해 어떻게 생각하세요?",
+        "중요한 일은 혼자 해결해야 한다고 생각하세요?",
+        "힘들 때 혼자 거리를 두는 일이 반복되나요?"
+      ]
+    ],
+    "insight": "홀로 있음은 자기 탐색이지만 고립과 동일하지 않다.",
+    "alternative": "성찰의 선택인지 관계를 피하고 있는지 확인할 것.",
+    "bridge_question": "혼자서 정리하고 싶은 것과 누군가의 도움이 필요한 것은 무엇인가요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "X",
+    "name": "운명의 수레바퀴",
+    "en": "Wheel of Fortune",
+    "keywords": [
+      "변화",
+      "순환",
+      "전환점"
+    ],
+    "symbol": "돌아가는 바퀴는 삶의 순환, 주변 존재들은 다양한 관점, 스핑크스는 변화 속 판단",
+    "easy": "상황이 달라지면서 새로운 기회나 불확실성을 마주하는 상태",
+    "interpretations": [
+      "변화의 시점에 있다고 느끼는 상태",
+      "새로운 기회를 기대하는 마음",
+      "상황은 내 뜻대로 되지 않는다는 믿음"
+    ],
+    "questions": [
+      [
+        "최근 가장 크게 바뀐 일은 뭔가요?",
+        "그 변화가 중요한 이유는 뭔가요?",
+        "지금 어떤 기회를 잡고 싶으세요?"
+      ],
+      [
+        "변화를 생각하면 어떤 기분이 드세요?",
+        "앞으로 어떤 변화가 일어나길 바라세요?",
+        "놓치고 싶지 않은 기회가 있나요?"
+      ],
+      [
+        "변화에 대비하려면 무엇이 필요하다고 생각하세요?",
+        "운이 따라야 성공한다고 생각하세요?",
+        "상황이 바뀔 때 선택을 미룬 적이 있나요?"
+      ]
+    ],
+    "insight": "변화의 흐름은 통제 밖의 요소와 선택 가능한 대응을 나누게 한다.",
+    "alternative": "우연을 운명이나 확정된 미래로 설명하지 않을 것.",
+    "bridge_question": "바꿀 수 없는 상황 하나와 지금 선택할 수 있는 행동 하나는 뭔가요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "XI",
+    "name": "정의",
+    "en": "Justice",
+    "keywords": [
+      "공정함",
+      "책임",
+      "판단"
+    ],
+    "symbol": "저울은 균형, 검은 명확한 판단, 정면 자세는 객관성",
+    "easy": "자신의 선택이 공정하고 책임 있는 것인지 따져보는 태도",
+    "interpretations": [
+      "합리적이고 책임 있는 결정을 고민하는 상태",
+      "공정하게 대우받고 싶은 욕구",
+      "올바른 선택을 해야 한다는 신념"
+    ],
+    "questions": [
+      [
+        "지금 어떤 결정을 내려야 하나요?",
+        "그 결정이 어려운 이유는 뭔가요?",
+        "어떤 기준으로 결정하고 싶으세요?"
+      ],
+      [
+        "불공평하다고 느낀 일이 있나요?",
+        "지금 어떤 대우를 받고 싶으세요?",
+        "표현하지 못한 서운함이 있나요?"
+      ],
+      [
+        "공정한 선택이란 무엇인가요?",
+        "항상 옳은 결정을 해야 한다고 생각하세요?",
+        "책임감 때문에 원하는 일을 미룬 적이 있나요?"
+      ]
+    ],
+    "insight": "옳고 그름의 판단 속에서 자신에게 지나치게 엄격할 수 있다.",
+    "alternative": "객관적 사실과 자기비난을 구별할 것.",
+    "bridge_question": "이 판단에 적용한 기준을 친한 사람에게도 똑같이 적용하실까요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "XII",
+    "name": "매달린 사람",
+    "en": "The Hanged Man",
+    "keywords": [
+      "멈춤",
+      "관점 전환",
+      "내려놓음"
+    ],
+    "symbol": "거꾸로 매달린 자세는 관점의 변화, 머리의 빛은 깨달음, 평온한 표정은 수용",
+    "easy": "잠시 멈추고 상황을 다른 관점에서 바라보는 태도",
+    "interpretations": [
+      "결정을 미루거나 상황을 재검토하는 상태",
+      "생활방식을 바꾸고 싶은 마음",
+      "무언가를 얻으려면 희생해야 한다는 생각"
+    ],
+    "questions": [
+      [
+        "지금 멈춰 있는 일이 뭔가요?",
+        "왜 아직 결정하지 못하셨어요?",
+        "기다림과 방향 전환 중 무엇이 필요할까요?"
+      ],
+      [
+        "계속 기다리면서 어떤 기분이 드세요?",
+        "지금 가장 바꾸고 싶은 게 뭔가요?",
+        "내려놓고 싶은 역할이 있나요?"
+      ],
+      [
+        "변화를 위해 무엇을 감수해야 한다고 생각하세요?",
+        "원하는 것을 얻으려면 희생해야 한다고 생각하세요?",
+        "자신의 욕구를 미룬 경험이 있나요?"
+      ]
+    ],
+    "insight": "멈춤은 실패가 아니라 다른 시각을 찾는 시간일 수 있다.",
+    "alternative": "자발적인 유예와 억지로 참고 있는 상황을 구별할 것.",
+    "bridge_question": "기다림 속에서 새롭게 보이는 것은 무엇이고, 더는 미루기 어려운 것은 무엇인가요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "XIII",
+    "name": "죽음",
+    "en": "Death",
+    "keywords": [
+      "종료",
+      "전환",
+      "재시작"
+    ],
+    "symbol": "해골 기사는 변화, 흰 장미 깃발은 새로운 가능성, 떠오르는 태양은 새로운 시작",
+    "easy": "익숙한 단계를 마무리하고 다른 삶의 방식을 시작하는 상태",
+    "interpretations": [
+      "현재의 일을 마무리하고 싶은 생각",
+      "오래된 역할을 내려놓고 싶은 욕구",
+      "끝내는 것은 실패라는 생각"
+    ],
+    "questions": [
+      [
+        "지금 마무리하고 싶은 일은 뭔가요?",
+        "그 일을 끝내고 싶은 이유는 뭔가요?",
+        "완전히 끝내고 싶으세요, 방식을 바꾸고 싶으세요?"
+      ],
+      [
+        "그만둔다고 생각하면 어떤 기분이 드세요?",
+        "새롭게 시작하고 싶은 일은 뭔가요?",
+        "이제 내려놓고 싶은 역할이 있나요?"
+      ],
+      [
+        "일을 그만두는 것은 어떤 의미인가요?",
+        "중간에 그만두면 실패라고 생각하세요?",
+        "끝내지 못해 오래 붙잡은 일이 있나요?"
+      ]
+    ],
+    "insight": "죽음은 실제 죽음 예고가 아니라 한 국면의 종료와 재편의 상징이다.",
+    "alternative": "무엇을 끝내는지와 무엇을 유지하는지 분리할 것.",
+    "bridge_question": "끝내고 싶은 역할과 다음 단계에도 가져가고 싶은 경험은 무엇인가요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "XIV",
+    "name": "절제",
+    "en": "Temperance",
+    "keywords": [
+      "균형",
+      "조율",
+      "인내"
+    ],
+    "symbol": "두 잔 사이의 물은 조율, 물과 땅에 놓인 발은 균형, 먼 길은 점진적인 변화",
+    "easy": "여러 요구와 역할 사이에서 자신에게 맞는 균형을 찾는 태도",
+    "interpretations": [
+      "일과 생활을 조율하려는 상태",
+      "편안한 균형을 찾고 싶은 욕구",
+      "모든 역할을 잘 해내야 한다는 기준"
+    ],
+    "questions": [
+      [
+        "요즘 균형을 잡기 어려운 부분은 뭔가요?",
+        "그 부분이 중요한 이유는 뭔가요?",
+        "무엇부터 조정하고 싶으세요?"
+      ],
+      [
+        "쉴 때 어떤 기분이 드세요?",
+        "지금 가장 필요한 여유는 무엇인가요?",
+        "잠시 내려놓고 싶은 일이 있나요?"
+      ],
+      [
+        "균형 잡힌 삶은 어떤 모습인가요?",
+        "모든 역할을 잘 해내야 한다고 생각하세요?",
+        "자신의 일을 뒤로 미루는 경우가 자주 있나요?"
+      ]
+    ],
+    "insight": "균형은 모두를 똑같이 맞추는 것이 아니라 나에게 필요한 비율을 찾는 과정이다.",
+    "alternative": "조화와 자기희생을 혼동하지 않을 것.",
+    "bridge_question": "지금 더할 것 하나와 덜어낼 것 하나는 무엇인가요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "XV",
+    "name": "악마",
+    "en": "The Devil",
+    "keywords": [
+      "집착",
+      "두려움",
+      "속박"
+    ],
+    "symbol": "사슬은 속박과 의존, 악마는 두려움과 유혹, 어둠은 제한적인 시각",
+    "easy": "익숙한 두려움이나 욕구가 선택을 제한한다고 느끼는 상황",
+    "interpretations": [
+      "어떤 걱정이나 습관에 묶여 있다고 느끼는 상태",
+      "자유롭게 선택하고 싶은 욕구",
+      "실패하거나 안정성을 잃으면 안 된다는 신념"
+    ],
+    "questions": [
+      [
+        "지금 가장 걱정되는 게 뭔가요?",
+        "그 걱정이 큰 이유는 뭔가요?",
+        "지금 바꾸고 싶은 습관이 있나요?"
+      ],
+      [
+        "그 상황에서 어떤 기분이 드세요?",
+        "걱정이 없다면 무엇을 해보고 싶으세요?",
+        "벗어나고 싶은 관계나 상황이 있나요?"
+      ],
+      [
+        "안전하게 선택하려면 어떤 조건이 필요하다고 생각하세요?",
+        "실패하면 안 된다고 생각하세요?",
+        "두려워서 기회를 미룬 적이 있나요?"
+      ]
+    ],
+    "insight": "사슬이 있다는 상징은 자유가 전혀 없다는 뜻이 아니다.",
+    "alternative": "두려움의 사실 근거와 익숙한 선택 습관을 구분할 것.",
+    "bridge_question": "반드시 지켜야 한다고 느끼는 것 중 다시 선택할 수 있는 부분이 있나요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "XVI",
+    "name": "탑",
+    "en": "The Tower",
+    "keywords": [
+      "급격한 변화",
+      "재평가",
+      "재구성"
+    ],
+    "symbol": "번개는 갑작스러운 변화, 무너지는 탑은 기존 구조의 흔들림, 왕관은 익숙한 확신",
+    "easy": "기존 계획이나 확신이 흔들릴 때 기반을 다시 살펴보는 상태",
+    "interpretations": [
+      "변화로 인해 계획을 다시 생각하는 상태",
+      "답답한 구조에서 벗어나고 싶은 마음",
+      "기존의 안정이 무너지면 안 된다는 믿음"
+    ],
+    "questions": [
+      [
+        "최근 예상과 달라진 일이 있나요?",
+        "그 변화가 가장 힘든 이유는 뭔가요?",
+        "무엇부터 다시 정리하고 싶으세요?"
+      ],
+      [
+        "변화를 겪으며 어떤 기분이 드세요?",
+        "지금 새롭게 시작하고 싶은 부분은 뭔가요?",
+        "벗어나고 싶은 오래된 방식이 있나요?"
+      ],
+      [
+        "안정적인 삶의 기준은 뭔가요?",
+        "기존 계획은 반드시 지켜야 한다고 생각하세요?",
+        "변화가 생기면 결정을 미룬 적이 있나요?"
+      ]
+    ],
+    "insight": "탑은 충격뿐 아니라 오래된 전제가 더는 맞지 않을 때의 재평가다.",
+    "alternative": "실제 사건이 있었는지, 변화에 대한 상상인지 먼저 확인할 것.",
+    "bridge_question": "흔들린 것은 현실의 조건인가요, 기존에 믿던 예상인가요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "XVII",
+    "name": "별",
+    "en": "The Star",
+    "keywords": [
+      "희망",
+      "회복",
+      "신뢰"
+    ],
+    "symbol": "큰 별은 희망, 물을 붓는 인물은 회복과 순환, 열린 자연은 편안함",
+    "easy": "어려움을 겪은 뒤 다시 가능성을 바라보고 회복하는 마음",
+    "interpretations": [
+      "앞으로 나아질 가능성을 생각하는 상태",
+      "회복하고 자신을 믿고 싶은 욕구",
+      "희망을 가져야 버틸 수 있다는 생각"
+    ],
+    "questions": [
+      [
+        "지금 가장 기대하는 변화는 뭔가요?",
+        "그 변화가 중요한 이유는 뭔가요?",
+        "무엇부터 다시 시작하고 싶으세요?"
+      ],
+      [
+        "희망을 떠올리면 어떤 기분이 드세요?",
+        "지금 무엇을 회복하고 싶으세요?",
+        "위로받고 싶은 부분이 있나요?"
+      ],
+      [
+        "희망을 유지하는 데 무엇이 필요하다고 생각하세요?",
+        "항상 긍정적이어야 한다고 생각하세요?",
+        "힘든 감정을 숨기고 괜찮다고 말한 적이 있나요?"
+      ]
+    ],
+    "insight": "별의 희망은 결과 보장보다 회복을 가능하게 하는 작은 신뢰다.",
+    "alternative": "회복의 속도를 강요하거나 무조건 긍정하라고 하지 않을 것.",
+    "bridge_question": "지금 조금이라도 회복되고 있다고 느끼는 순간은 언제인가요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "XVIII",
+    "name": "달",
+    "en": "The Moon",
+    "keywords": [
+      "불확실성",
+      "감정",
+      "혼란"
+    ],
+    "symbol": "달은 모호한 인식, 개와 늑대는 익숙함과 본능, 물에서 나오는 가재는 떠오르는 감각",
+    "easy": "상황이 분명하지 않아 걱정과 여러 감정이 함께 드는 상태",
+    "interpretations": [
+      "정보가 부족해 불확실하게 느끼는 상태",
+      "걱정의 이유를 분명히 알고 싶은 욕구",
+      "확실하지 않으면 움직이면 안 된다는 생각"
+    ],
+    "questions": [
+      [
+        "지금 가장 불확실한 부분은 뭔가요?",
+        "그 부분이 걱정되는 이유는 뭔가요?",
+        "어떤 정보를 먼저 확인하고 싶으세요?"
+      ],
+      [
+        "불확실할 때 어떤 감정이 드세요?",
+        "지금 가장 알고 싶은 것은 뭔가요?",
+        "표현하기 어려운 걱정이 있나요?"
+      ],
+      [
+        "결정하려면 어느 정도 확신이 필요하세요?",
+        "확실하지 않으면 결정하면 안 된다고 생각하세요?",
+        "걱정 때문에 결정을 미룬 경험이 있나요?"
+      ]
+    ],
+    "insight": "달의 불명확함은 숨겨진 진실의 확정이 아니라 정보와 감정이 섞여 있는 상태다.",
+    "alternative": "직감·추측·검증된 사실을 나누어 볼 것.",
+    "bridge_question": "지금 확실히 아는 사실과 걱정 때문에 예상하는 일을 나눠볼까요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "XIX",
+    "name": "태양",
+    "en": "The Sun",
+    "keywords": [
+      "기쁨",
+      "자신감",
+      "자기표현"
+    ],
+    "symbol": "밝은 태양은 명료함, 흰 말을 탄 아이는 자유로운 표현, 해바라기는 성장",
+    "easy": "자신을 편안하게 표현하고 성취의 기쁨을 느끼는 상태",
+    "interpretations": [
+      "즐거운 성취나 자신감을 인식하는 상태",
+      "자유롭게 자신을 표현하고 싶은 욕구",
+      "항상 밝고 성공적이어야 한다는 생각"
+    ],
+    "questions": [
+      [
+        "요즘 가장 즐거운 일은 뭔가요?",
+        "그 일이 즐거운 이유는 뭔가요?",
+        "앞으로 어떤 일을 더 해보고 싶으세요?"
+      ],
+      [
+        "자신답다고 느낄 때 어떤 기분이 드세요?",
+        "지금 가장 하고 싶은 일은 뭔가요?",
+        "표현하지 못한 바람이 있나요?"
+      ],
+      [
+        "성공했다고 느끼는 기준은 뭔가요?",
+        "항상 좋은 결과를 내야 한다고 생각하세요?",
+        "힘든데도 밝은 모습을 유지한 적이 있나요?"
+      ]
+    ],
+    "insight": "태양의 밝음은 자기표현의 기쁨이며 항상 행복해야 한다는 명령이 아니다.",
+    "alternative": "진짜 즐거움과 잘 보여야 한다는 압박을 구별할 것.",
+    "bridge_question": "남의 평가와 상관없이 자신이 즐겁다고 느끼는 순간은 언제인가요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "XX",
+    "name": "심판",
+    "en": "Judgement",
+    "keywords": [
+      "각성",
+      "재평가",
+      "결단"
+    ],
+    "symbol": "천사의 나팔은 깨달음과 부름, 일어나는 인물들은 새로운 응답, 열린 관은 과거 단계에서 벗어남",
+    "easy": "지나온 선택을 돌아보고 지금 무엇을 바꿀지 결정하는 태도",
+    "interpretations": [
+      "과거를 돌아보며 중요한 결정을 고민하는 상태",
+      "새로운 기회를 통해 달라지고 싶은 욕구",
+      "과거의 실수를 바로잡아야 한다는 생각"
+    ],
+    "questions": [
+      [
+        "지금 다시 생각하고 있는 결정은 뭔가요?",
+        "그 결정을 돌아보는 이유는 뭔가요?",
+        "다시 선택한다면 무엇을 바꾸고 싶으세요?"
+      ],
+      [
+        "과거를 떠올리면 어떤 감정이 드세요?",
+        "새롭게 시작하고 싶은 일은 뭔가요?",
+        "다시 기회가 있다면 해보고 싶은 일이 있나요?"
+      ],
+      [
+        "실수를 어떻게 받아들이세요?",
+        "과거의 실수는 반드시 만회해야 한다고 생각하세요?",
+        "지난 선택을 반복해서 후회한 적이 있나요?"
+      ]
+    ],
+    "insight": "심판은 비난보다 지금 다시 응답할 수 있는 선택에 주목한다.",
+    "alternative": "과거의 실수와 현재의 수정 가능성을 분리할 것.",
+    "bridge_question": "그때의 경험에서 배운 것을 오늘의 선택에 어떻게 적용하고 싶으세요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  },
+  {
+    "n": "XXI",
+    "name": "세계",
+    "en": "The World",
+    "keywords": [
+      "완성",
+      "성취",
+      "통합"
+    ],
+    "symbol": "월계관은 완성, 춤추는 인물은 자유와 통합, 네 모서리의 존재들은 삶의 여러 측면",
+    "easy": "한 단계를 마무리하고 경험을 바탕으로 다음 단계로 나아가는 상태",
+    "interpretations": [
+      "지금까지의 성취와 마무리를 생각하는 상태",
+      "새로운 단계에서 자유롭게 살고 싶은 욕구",
+      "시작한 일은 완벽히 끝내야 한다는 생각"
+    ],
+    "questions": [
+      [
+        "지금까지 가장 만족스러운 성과는 뭔가요?",
+        "다음 단계로 가고 싶은 이유는 뭔가요?",
+        "마무리와 병행 중 무엇을 선택하고 싶으세요?"
+      ],
+      [
+        "지금 일을 끝낸다면 어떤 기분이 드세요?",
+        "다음에는 어떤 삶을 살아보고 싶으세요?",
+        "이제 내려놓고 싶은 역할이 있나요?"
+      ],
+      [
+        "일을 잘 마무리했다는 기준은 뭔가요?",
+        "시작한 일은 완벽하게 끝내야 한다고 생각하세요?",
+        "끝내지 못해 오래 붙잡은 일이 있나요?"
+      ]
+    ],
+    "insight": "세계는 끝이면서 다음 단계의 시작이며 완벽주의의 압박도 드러낼 수 있다.",
+    "alternative": "충분한 완료와 끝없는 완벽 추구를 구별할 것.",
+    "bridge_question": "무엇을 이미 충분히 해냈고, 이제 다음으로 가져갈 것은 무엇인가요?",
+    "evidence": "그림의 상징 → 내담자가 실제로 한 말 → 의식 자리의 기능 → 확인 질문의 응답 순서로 해석을 점검한다."
+  }
+]</script><script>
+'use strict';const cards=JSON.parse(document.getElementById('card-data').textContent),$=id=>document.getElementById(id),positions=['표면의식','잠재의식','믿음체계'],qTypes=[['현재 상황형','이유 확인형','선택형'],['감정형','욕구형','심화 탐색형'],['기준형','당위형','반복 패턴형']];let current=0,pos='all';const storageKey='maeumeul-geotda-v1';let db;try{db=JSON.parse(localStorage.getItem(storageKey))||{records:[],favorites:[],cardNotes:{}}}catch{db={records:[],favorites:[],cardNotes:{}}}if(!db.cardNotes||typeof db.cardNotes!=='object')db.cardNotes={};function persist(){try{localStorage.setItem(storageKey,JSON.stringify(db));return true}catch{return false}}function el(tag,text,cls){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e}function showPage(id){document.querySelectorAll('main>section').forEach(e=>e.classList.toggle('hidden',e.id!==id));document.querySelectorAll('nav button').forEach(e=>e.classList.toggle('active',e.dataset.page===id));if(id==='records')renderRecords();window.scrollTo({top:0,behavior:'smooth'})}document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+function fillSelect(s,selected){s.replaceChildren();cards.forEach((c,i)=>{const o=el('option',`${c.n} · ${c.name}`);o.value=i;s.append(o)});s.value=selected}
+fillSelect($('cardPick'),0);$('cardPick').addEventListener('change',e=>{current=+e.target.value;renderCard()});document.querySelectorAll('#positionTabs button').forEach(b=>b.addEventListener('click',()=>{pos=b.dataset.pos;renderCard()}));function renderCard(){const c=cards[current],info=$('cardInfo');info.replaceChildren();const top=el('div',undefined,'card-top'),mark=el('div',c.n,'symbol'),right=el('div');right.append(el('div',c.name,'card-title'),el('div',c.en,'small'));const tags=el('div',undefined,'tags');c.keywords.forEach(k=>tags.append(el('span',k,'tag')));right.append(tags);top.append(mark,right);info.append(top,el('h3','그림의 상징'),el('p',c.symbol),el('h3','쉽게 이해하기'),el('p',c.easy),el('h3','아난트의 통찰을 위한 심화 리딩'),el('p',c.insight),el('div','반대 가능성 점검: '+c.alternative,'helper'),el('h3','내담자와 연결하는 핵심 질문'),el('p',c.bridge_question),el('p',c.evidence,'source-note'));$('cardNote').value=db.cardNotes[current]||'';$('cardNoteStatus').textContent='';document.querySelectorAll('#positionTabs button').forEach(b=>b.classList.toggle('active',b.dataset.pos===pos));const container=$('positions');container.replaceChildren();[0,1,2].filter(i=>pos==='all'||+pos===i).forEach(i=>{const box=el('div',undefined,'section');box.append(el('h3',`${i+1}. ${positions[i]}`),el('p',`리딩 방향: ${c.interpretations[i]}`));c.questions[i].forEach((q,j)=>{const r=el('div',undefined,'question');r.append(el('small',qTypes[i][j]),el('div',`“${q}”`));box.append(r)});container.append(box)});$('favoriteCard').textContent=db.favorites.includes(current)?'★ 즐겨찾기 해제':'☆ 즐겨찾기'}$('saveCardNote').addEventListener('click',()=>{db.cardNotes[current]=$('cardNote').value;const ok=persist();$('cardNoteStatus').textContent=ok?'나만의 카드 통찰을 저장했어요.':'저장에 실패했어요.'});$('favoriteCard').addEventListener('click',()=>{db.favorites=db.favorites.includes(current)?db.favorites.filter(x=>x!==current):[...db.favorites,current];persist();renderCard()});$('practiceCard').addEventListener('click',()=>{document.querySelector('#pick0').value=current;renderSuggestions();showPage('practice')});renderCard();
+function renderPractice(){const picks=$('threePicks');picks.replaceChildren();positions.forEach((label,i)=>{const f=el('div',undefined,'field'),l=el('label',label),s=el('select');s.id='pick'+i;fillSelect(s,[0,18,15][i]);s.addEventListener('change',renderSuggestions);f.append(l,s);picks.append(f)});const qs=$('practiceQuestions');positions.forEach((label,i)=>{const f=el('div',undefined,'field');f.append(el('label',label+' 확인 질문'));const sugg=el('select');sugg.id='suggest'+i;const txt=el('textarea');txt.id='question'+i;txt.placeholder='질문을 선택하거나 직접 작성하세요.';sugg.addEventListener('change',()=>{if(sugg.value)txt.value=sugg.value});f.append(sugg,txt);qs.append(f)});const s=$('scores');['K · 키워드 이해','P · 자리 연결','Q · 질문의 구체성','C · 내담자 확인'].forEach((label,i)=>{const r=el('div',undefined,'score-row');r.append(el('span',label));const sel=el('select');sel.id='score'+i;for(let n=1;n<=5;n++){const o=el('option',n+'점');o.value=n;sel.append(o)}sel.value='3';r.append(sel);s.append(r)});renderSuggestions()}
+function renderSuggestions(){positions.forEach((_,i)=>{const c=cards[+$('pick'+i).value],s=$('suggest'+i),old=$('question'+i).value;s.replaceChildren();const def=el('option','질문 유형을 선택하세요');def.value='';s.append(def);c.questions[i].forEach((q,j)=>{const o=el('option',qTypes[i][j]+' · '+q);o.value=q;s.append(o)});$('question'+i).value=old})}renderPractice();
+$('unlockQuestions').addEventListener('click',()=>{if(!$('scenario').value.trim()||!$('integrated').value.trim()){ $('unlockStatus').textContent='내담자의 고민과 세 장 통합 리딩을 먼저 적어 주세요.';return;}$('practiceQuestions').classList.remove('hidden');$('unlockStatus').textContent='이제 자리별 질문을 한 개씩 선택하고 응답을 확인해 보세요.'});function getForm(){return{date:new Date().toISOString(),scenario:$('scenario').value,cardIds:positions.map((_,i)=>+$('pick'+i).value),reading:$('integrated').value,questions:positions.map((_,i)=>$('question'+i).value),response:$('response').value,scores:[0,1,2,3].map(i=>+$('score'+i).value),improvement:$('improve').value}}function formatRecord(r){return`마음을 걷다 | 실전 리딩 기록\n일시: ${new Date(r.date).toLocaleString('ko-KR')}\n고민: ${r.scenario}\n카드: ${r.cardIds.map((id,i)=>positions[i]+' '+cards[id].name).join(' / ')}\n통합 리딩: ${r.reading}\n${r.questions.map((q,i)=>positions[i]+' 질문: '+q).join('\n')}\n내담자 확인: ${r.response}\nK-P-Q-C: ${r.scores.join('/')} (총 ${r.scores.reduce((a,b)=>a+b,0)}/20)\n개선점: ${r.improvement}`}
+$('savePractice').addEventListener('click',()=>{const r=getForm();if(!r.scenario.trim()||!r.reading.trim()){alert('가상 내담자의 고민과 통합 리딩을 작성해 주세요.');return}db.records.unshift(r);const ok=persist();$('saveStatus').textContent=ok?'이 기기에 학습 기록을 저장했어요.':'저장에 실패했어요. 백업을 확인해 주세요.'});async function copyText(t){try{await navigator.clipboard.writeText(t);alert('복사했어요.')}catch{prompt('아래 내용을 복사하세요.',t)}}$('exportPractice').addEventListener('click',()=>copyText(formatRecord(getForm())));$('clearPractice').addEventListener('click',()=>{if(!confirm('작성 중인 내용을 지울까요? 저장된 학습 기록은 유지됩니다.'))return;['scenario','integrated','response','improve',...positions.map((_,i)=>'question'+i)].forEach(id=>$(id).value='');$('saveStatus').textContent='';$('practiceQuestions').classList.add('hidden');$('unlockStatus').textContent=''});
+function renderRecords(){const list=$('recordsList');list.replaceChildren();if(!db.records.length)list.append(el('p','아직 저장된 기록이 없어요.','note'));db.records.forEach((r,i)=>{const item=el('div',undefined,'record');item.append(el('strong',new Date(r.date).toLocaleString('ko-KR')),el('p',r.cardIds.map((id,j)=>positions[j]+': '+cards[id].name).join(' · ')),el('p',r.scenario||'고민 미입력'));const b=el('button','기록 보기 / 복사','secondary');b.addEventListener('click',()=>copyText(formatRecord(r)));const d=el('button','삭제','secondary');d.addEventListener('click',()=>{if(confirm('이 기록을 삭제할까요?')){db.records.splice(i,1);persist();renderRecords()}});const actions=el('div',undefined,'btnrow');actions.append(b,d);item.append(actions);list.append(item)})}
+function download(name,data,mime){const a=document.createElement('a'),url=URL.createObjectURL(new Blob([data],{type:mime}));a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}$('backup').addEventListener('click',()=>download('maeumeul-geotda-backup.json',JSON.stringify({version:1,records:db.records,favorites:db.favorites,cardNotes:db.cardNotes},null,2),'application/json'));$('importBtn').addEventListener('click',()=>$('importFile').click());$('importFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const obj=JSON.parse(await file.text());if(!Array.isArray(obj.records)||!Array.isArray(obj.favorites))throw Error();if(!confirm('백업 파일의 기록을 현재 기록에 추가할까요?'))return;db.records=[...obj.records.filter(r=>r&&Array.isArray(r.cardIds)&&r.cardIds.length===3),...db.records];db.favorites=[...new Set([...db.favorites,...obj.favorites.filter(n=>Number.isInteger(n)&&n>=0&&n<22)])];if(obj.cardNotes&&typeof obj.cardNotes==='object'){Object.entries(obj.cardNotes).forEach(([id,note])=>{if(/^(?:[0-9]|1[0-9]|2[01])$/.test(id)&&typeof note==='string')db.cardNotes[id]=note.slice(0,20000)})}persist();renderRecords();renderCard();alert('백업을 가져왔어요.')}catch{alert('올바른 백업 파일이 아니에요.')}finally{e.target.value=''}});
+$('downloadManual').addEventListener('click',()=>{let txt='마음을 걷다 | 메이저 22장 학습 매뉴얼\n\n';cards.forEach(c=>{txt+=`${c.n} ${c.name} (${c.en})\n키워드: ${c.keywords.join(' · ')}\n상징: ${c.symbol}\n쉬운 설명: ${c.easy}\n심화 리딩: ${c.insight}\n다른 가능성: ${c.alternative}\n핵심 확인: ${c.bridge_question}\n아난트의 통찰 노트: ${db.cardNotes[cards.indexOf(c)]||'미작성'}\n`;positions.forEach((p,i)=>{txt+=`[${p}] ${c.interpretations[i]}\n`;c.questions[i].forEach((q,j)=>txt+=` - ${qTypes[i][j]}: ${q}\n`)});txt+='\n'});download('마음을걷다_메이저22장_매뉴얼.txt',txt,'text/plain;charset=utf-8')});if('serviceWorker'in navigator&&location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script></body></html>
